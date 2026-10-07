@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ProgressLab | Dashboard</title>
+<link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">P</div><div><strong>ProgressLab</strong><span>Person 3 · Monika</span></div></div>
+  <nav class="nav">
+    <a class="nav-item active" href="/dashboard">⌂ <span>Dashboard</span></a>
+    <a class="nav-item" href="/analytics">◒ <span>Analytics</span></a>
+    <a class="nav-item" href="#achievements">★ <span>Achievements</span></a>
+  </nav>
+  <div class="sidebar-footer"><div class="mini-label">PRODUCT MODULE</div><div class="integration-pill">● Person 2 Connected</div></div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <div><span class="eyebrow">LEARNING PROGRESS</span><h1>Good progress. Keep going.</h1><p class="muted">Your roadmap, consistency, XP and milestones in one place.</p></div>
+  <button class="ghost-btn" id="refreshBtn">↻ Refresh</button>
+</header>
+
+<section class="hero-card">
+  <div><span class="eyebrow light">CURRENT ROLE</span><h2 id="role">Loading...</h2>
+  <p id="nextMissionText">Loading your next mission...</p>
+  <a class="primary-btn" href="#achievements">View achievements →</a></div>
+  <div class="hero-ring"><div class="ring-inner"><strong id="heroCompletion">0%</strong><span>complete</span></div></div>
+</section>
+
+<section class="stats-grid">
+  <article class="stat-card xp"><div class="stat-icon">⭐</div><div><span class="stat-label">TOTAL XP</span><strong id="xp">0</strong><span class="stat-sub">experience points</span></div></article>
+  <article class="stat-card level"><div class="stat-icon">◆</div><div><span class="stat-label">LEVEL</span><strong id="level">1</strong><span class="stat-sub">current level</span></div></article>
+  <article class="stat-card streak"><div class="stat-icon">🔥</div><div><span class="stat-label">STREAK</span><strong id="streak">0</strong><span class="stat-sub">days in a row</span></div></article>
+  <article class="stat-card completion"><div class="stat-icon">✓</div><div><span class="stat-label">ROADMAP</span><strong id="completion">0%</strong><span class="stat-sub">completed</span></div></article>
+</section>
+
+<section class="content-grid">
+<article class="panel"><div class="panel-heading"><div><span class="eyebrow">NEXT MISSION</span><h3 id="missionTitle">Loading...</h3></div><span class="mission-dot">●</span></div>
+<div class="mission-body"><div class="progress-track"><div id="progressBar" class="progress-fill"></div></div><div class="progress-row"><span>Roadmap completion</span><strong id="completionSmall">0%</strong></div></div></article>
+<article class="panel"><div class="panel-heading"><div><span class="eyebrow">CONSISTENCY</span><h3 id="streakMessage">Start today</h3></div><div class="fire-badge">🔥</div></div>
+<div class="streak-big"><span id="streakBig">0</span><small>days</small></div><p class="muted">Small daily actions compound into meaningful progress.</p></article>
+</section>
+
+<section id="achievements" class="panel achievements-panel">
+<div class="panel-heading"><div><span class="eyebrow">MILESTONES</span><h3>Achievements</h3></div><span class="achievement-count" id="achievementCount">0 / 4</span></div>
+<div id="achievementGrid" class="achievement-grid"></div>
+</section>
+
+<footer class="footer"><span>Progress & Product · Person 3 — Monika</span><span>FastAPI · Jinja2 · Chart.js</span></footer>
+</main></div>
+<script src="/static/js/dashboard.js"></script>
+</body></html>

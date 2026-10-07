@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ProgressLab | Analytics</title>
+<link rel="stylesheet" href="/static/css/dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+<div class="brand"><div class="brand-mark">P</div><div><strong>ProgressLab</strong><span>Person 3 · Monika</span></div></div>
+<nav class="nav"><a class="nav-item" href="/dashboard">⌂ <span>Dashboard</span></a><a class="nav-item active" href="/analytics">◒ <span>Analytics</span></a><a class="nav-item" href="/dashboard#achievements">★ <span>Achievements</span></a></nav>
+<div class="sidebar-footer"><div class="mini-label">ANALYTICS ENGINE</div><div class="integration-pill">● History Enabled</div></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><span class="eyebrow">PROGRESS ANALYTICS</span><h1>Understand your learning curve.</h1><p class="muted">Skill coverage, phase momentum and investment over time.</p></div><a class="ghost-btn link-btn" href="/dashboard">← Dashboard</a></header>
+<section class="analytics-grid">
+<article class="chart-card chart-wide"><div class="chart-title"><div><span class="eyebrow">SKILLS</span><h3>Coverage vs Target</h3></div><span class="chart-icon">◒</span></div><div class="chart-wrap"><canvas id="skillChart"></canvas></div></article>
+<article class="chart-card"><div class="chart-title"><div><span class="eyebrow">ROADMAP</span><h3>Phase Progress Over Time</h3></div><span class="chart-icon">↗</span></div><div class="chart-wrap"><canvas id="phaseChart"></canvas></div></article>
+<article class="chart-card"><div class="chart-title"><div><span class="eyebrow">INVESTMENT</span><h3>Hours Invested</h3></div><span class="chart-icon">◷</span></div><div class="chart-wrap"><canvas id="hoursChart"></canvas></div></article>
+</section>
+<section class="insight-grid"><article class="insight-card"><span>Current XP</span><strong id="insightXp">—</strong><small>from Person 2 state</small></article><article class="insight-card"><span>Current Streak</span><strong id="insightStreak">—</strong><small>daily consistency</small></article><article class="insight-card"><span>Snapshots</span><strong id="insightSnapshots">—</strong><small>history points stored</small></article></section>
+<footer class="footer"><span>Historical data is owned by Person 3.</span><span>Current state remains owned by Person 2.</span></footer>
+</main></div>
+<script src="/static/js/analytics.js"></script>
+</body></html>
