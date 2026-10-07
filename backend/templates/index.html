@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Learning & Guidance</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🤖</span>
+      <div>
+        <h1>AI Learning &amp; Guidance</h1>
+        <p class="sub">Roadmap · Daily Missions · Adaptive Mentor · Skill Tree</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><span id="stat-xp">0</span><label>XP</label></div>
+      <div class="stat"><span id="stat-level">1</span><label>Level</label></div>
+      <div class="stat"><span id="stat-streak">0🔥</span><label>Streak</label></div>
+      <div class="stat wide">
+        <div class="bar"><div class="bar-fill" id="stat-bar"></div></div>
+        <label id="stat-pct">0% complete</label>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="setup">🎯 Setup</button>
+    <button class="tab" data-tab="roadmap">🗺️ Roadmap</button>
+    <button class="tab" data-tab="missions">✅ Missions</button>
+    <button class="tab" data-tab="tree">🌳 Skill Tree</button>
+    <button class="tab" data-tab="mentor">💬 Mentor</button>
+  </nav>
+
+  <main>
+    <section id="tab-setup" class="panel active">
+      <h2>Profile &amp; Goal Setup</h2>
+      <form id="setup-form" class="card form">
+        <label>Target job role
+          <input id="f-role" type="text" placeholder="e.g. Frontend Developer" required />
+        </label>
+        <label>Current skills <small>(comma separated)</small>
+          <input id="f-skills" type="text" placeholder="e.g. HTML, CSS, Python basics" />
+        </label>
+        <label>Skill gaps you already suspect <small>(comma separated)</small>
+          <input id="f-gaps" type="text" placeholder="e.g. JavaScript, APIs, Git" />
+        </label>
+        <label>Hours available per week
+          <input id="f-hours" type="number" min="1" max="80" value="7" />
+        </label>
+        <button type="submit" class="btn primary" id="btn-generate">✨ Generate My Roadmap</button>
+        <p class="hint" id="gen-hint"></p>
+      </form>
+    </section>
+
+    <section id="tab-roadmap" class="panel">
+      <h2>Learning Roadmap</h2>
+      <div id="roadmap-list" class="stack"><p class="empty">No roadmap yet — generate one in Setup.</p></div>
+    </section>
+
+    <section id="tab-missions" class="panel">
+      <h2>Today's Missions</h2>
+      <div id="mission-list" class="stack"></div>
+    </section>
+
+    <section id="tab-tree" class="panel">
+      <h2>Skill Tree</h2>
+      <div id="tree-grid" class="tree-grid"></div>
+    </section>
+
+    <section id="tab-mentor" class="panel">
+      <h2>Adaptive AI Mentor</h2>
+      <div class="chat" id="chat">
+        <div class="msg bot">Hi! I'm your mentor. Ask me what to learn next, how to tackle a stuck point, or how to plan today.</div>
+      </div>
+      <div class="chips">
+        <button class="chip">What should I do today?</button>
+        <button class="chip">I'm stuck on a concept</button>
+        <button class="chip">How do I prep for placements?</button>
+      </div>
+      <form id="chat-form" class="chat-input">
+        <input id="chat-text" type="text" placeholder="Ask your mentor..." autocomplete="off" />
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
