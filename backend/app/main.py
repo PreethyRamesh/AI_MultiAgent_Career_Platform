@@ -6,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.requests import Request
 
 from . import state as store
+from .career import router as career_router
 from .models import (
     ChatIn,
     CompleteIn,
@@ -24,10 +25,18 @@ app = FastAPI(title="AI Learning & Guidance Module", version="1.0.0")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
+# Person 1 integration: AI Career Analysis module (own router + page).
+app.include_router(career_router)
+
 
 @app.get("/")
 def index(request: Request):
     return templates.TemplateResponse(request, "index.html")
+
+
+@app.get("/career")
+def career(request: Request):
+    return templates.TemplateResponse(request, "career.html")
 
 
 @app.post("/api/roadmap")

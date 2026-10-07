@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Career Analysis</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/career.css" />
+</head>
+<body class="career-page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🎯</span>
+      <div>
+        <h1>AI Career Analysis</h1>
+        <p class="sub">Profile · Resume · Projects · Coursework · Skill Profile · Gap · Match</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><span id="ov-score">–</span><label>Match</label></div>
+      <div class="stat"><span id="ov-skills">0</span><label>Skills</label></div>
+      <div class="stat"><span id="ov-has">0</span><label>Have</label></div>
+      <div class="stat"><span id="ov-gap">0</span><label>Gaps</label></div>
+      <a class="module-link" href="/">🤖 Learning Hub</a>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="side" id="side-nav">
+      <button class="nav-btn active" data-panel="overview">🏠 Overview</button>
+      <button class="nav-btn" data-panel="profile">👤 Profile &amp; Goal</button>
+      <button class="nav-btn" data-panel="resume">📄 Resume</button>
+      <button class="nav-btn" data-panel="projects">💻 Projects</button>
+      <button class="nav-btn" data-panel="coursework">📚 Coursework</button>
+      <button class="nav-btn" data-panel="skills">🧠 Skill Profile</button>
+      <button class="nav-btn" data-panel="job">🎯 Target Job</button>
+      <button class="nav-btn" data-panel="gaps">📉 Skill Gaps</button>
+      <button class="nav-btn" data-panel="match">🏆 Match Score</button>
+      <button class="nav-btn" data-panel="careers">💼 Recommendations</button>
+      <button class="nav-btn" data-panel="mapping">🔗 Skill→Job Map</button>
+    </nav>
+
+    <main class="content">
+      <!-- ============ OVERVIEW ============ -->
+      <section id="panel-overview" class="panel active">
+        <div class="grid-cards">
+          <div class="card stat-card">
+            <div class="stat-label">Job Match Score</div>
+            <div class="score-mini" id="ov-score-big">—</div>
+            <div class="bar scorebar"><div class="bar-fill" id="ov-score-bar"></div></div>
+            <div class="stat-sub" id="ov-grade">No analysis yet</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-label">Skill Profile</div>
+            <div class="stat-value" id="ov-skills-big">0</div>
+            <div class="stat-sub" id="ov-has-sub">0 strong · 0 improving</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-label">Top Strength</div>
+            <div class="stat-value small" id="ov-strength">—</div>
+            <div class="stat-sub" id="ov-categories">—</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-label">Target Role</div>
+            <div class="stat-value small" id="ov-target">—</div>
+            <div class="stat-sub" id="ov-goal">—</div>
+          </div>
+        </div>
+
+        <div class="card action-panel">
+          <h3>Run the full AI Career Analysis</h3>
+          <p class="muted">Combines your profile, resume, projects, coursework and target job into one report: skill profile, gaps, match score, recommendations and skill→job mapping.</p>
+          <div class="action-row">
+            <button class="btn primary" id="btn-analysis">⚡ Run Full Analysis</button>
+            <button class="btn ghost" id="btn-send-roadmap">➡️ Send skill gaps to Learning Roadmap</button>
+            <button class="btn ghost danger" id="btn-reset">Reset</button>
+          </div>
+          <p class="hint" id="analysis-hint"></p>
+        </div>
+
+        <div class="card" id="ov-report" style="display:none">
+          <h3>Latest report</h3>
+          <div class="chips" id="ov-report-chips"></div>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE ============ -->
+      <section id="panel-profile" class="panel">
+        <h2>Profile &amp; Goal Setup</h2>
+        <form id="profile-form" class="card form">
+          <label>Student name <input id="f-name" type="text" placeholder="e.g. Preethy" /></label>
+          <label>Degree / course <input id="f-degree" type="text" placeholder="e.g. B.E. Computer Science" /></label>
+          <label>Year of study <input id="f-year" type="text" placeholder="e.g. 3rd year" /></label>
+          <label>Current skills <small>(comma separated)</small><input id="f-skills" type="text" placeholder="e.g. Python, SQL, HTML, CSS" /></label>
+          <label>Target job role <input id="f-target" type="text" placeholder="e.g. Data Analyst" /></label>
+          <label>Career goal <small>(what do you want to achieve?)</small><input id="f-goal" type="text" placeholder="e.g. Become a data analyst at a product company" /></label>
+          <button type="submit" class="btn primary">Save Profile</button>
+          <p class="hint" id="profile-hint"></p>
+        </form>
+      </section>
+
+      <!-- ============ RESUME ============ -->
+      <section id="panel-resume" class="panel">
+        <h2>Resume Analysis</h2>
+        <div class="card form">
+          <label>Paste your resume content
+            <textarea id="ta-resume" rows="12" placeholder="Paste your full resume text here…"></textarea>
+          </label>
+          <div class="action-row">
+            <button class="btn primary" id="btn-resume">🔍 Analyze Resume</button>
+            <label class="upload-label">or <input type="file" id="file-resume" accept=".txt,.md,.pdf" /> upload a file</label>
+          </div>
+          <p class="hint" id="resume-hint"></p>
+        </div>
+        <div id="resume-results" class="stack" style="margin-top:16px"></div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="panel-projects" class="panel">
+        <h2>Project Analysis</h2>
+        <p class="muted">Enter your projects — the analyzer identifies the technical skills each one demonstrates.</p>
+        <div id="project-rows"></div>
+        <div class="action-row">
+          <button class="btn ghost" id="btn-add-project">+ Add project</button>
+          <button class="btn primary" id="btn-projects">🔍 Analyze Projects</button>
+        </div>
+        <p class="hint" id="projects-hint"></p>
+        <div id="projects-results" class="stack" style="margin-top:16px"></div>
+      </section>
+
+      <!-- ============ COURSEWORK ============ -->
+      <section id="panel-coursework" class="panel">
+        <h2>Coursework Analysis</h2>
+        <p class="muted">List the subjects you have studied — we map them to the skills you gained.</p>
+        <div id="course-rows"></div>
+        <div class="action-row">
+          <button class="btn ghost" id="btn-add-course">+ Add subject</button>
+          <button class="btn primary" id="btn-courses">🔍 Analyze Coursework</button>
+        </div>
+        <p class="hint" id="courses-hint"></p>
+        <div id="courses-results" class="stack" style="margin-top:16px"></div>
+      </section>
+
+      <!-- ============ SKILL PROFILE ============ -->
+      <section id="panel-skills" class="panel">
+        <h2>AI Skill Assessment</h2>
+        <p class="muted">Your skills are aggregated from your resume, projects, coursework and profile, then categorized.</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Strengths <span class="badge green" id="sk-strength-count">0</span></h3>
+            <div id="sk-strengths" class="stack"><p class="empty">Run the analysis to see your strengths.</p></div>
+          </div>
+          <div class="card">
+            <h3>Category breakdown</h3>
+            <div id="sk-categories" class="stack"></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3>All detected skills</h3>
+          <div id="sk-all" class="chips"></div>
+        </div>
+      </section>
+
+      <!-- ============ JOB ============ -->
+      <section id="panel-job" class="panel">
+        <h2>Target Job Analysis</h2>
+        <div class="card form">
+          <label>Job title (optional) <input id="f-job-title" type="text" placeholder="e.g. Data Analyst" /></label>
+          <label>Paste the job description
+            <textarea id="ta-job" rows="12" placeholder="Paste the full job description here…"></textarea>
+          </label>
+          <div class="action-row"><button class="btn primary" id="btn-job">🎯 Analyze Job</button></div>
+          <p class="hint" id="job-hint"></p>
+        </div>
+        <div id="job-results" class="stack" style="margin-top:16px"></div>
+      </section>
+
+      <!-- ============ GAPS ============ -->
+      <section id="panel-gaps" class="panel">
+        <h2>Skill Gap Analysis</h2>
+        <p class="muted">Your skills against the target job requirements — clearly separated.</p>
+        <div class="grid-3">
+          <div class="card gap-col good">
+            <h3>✅ Already have <span class="badge green" id="gap-has-count">0</span></h3>
+            <div id="gap-has" class="chips"></div>
+          </div>
+          <div class="card gap-col warn">
+            <h3>🟠 Needs improvement <span class="badge amber" id="gap-improving-count">0</span></h3>
+            <div id="gap-improving" class="chips"></div>
+          </div>
+          <div class="card gap-col bad">
+            <h3>❌ Missing <span class="badge red" id="gap-missing-count">0</span></h3>
+            <div id="gap-missing" class="chips"></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3>Bonus skills beyond the job</h3>
+          <div id="gap-extra" class="chips"></div>
+        </div>
+      </section>
+
+      <!-- ============ MATCH ============ -->
+      <section id="panel-match" class="panel">
+        <h2>Job Match Score</h2>
+        <div class="card match-card">
+          <div class="match-score" id="match-score">—</div>
+          <div class="match-grade" id="match-grade">No analysis yet</div>
+          <div class="bar scorebar"><div class="bar-fill" id="match-bar"></div></div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3>Factors affecting your score</h3>
+          <div id="match-factors" class="stack"></div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="card"><h3>Matched skills</h3><div id="match-matched" class="chips"></div></div>
+          <div class="card"><h3>Missing skills</h3><div id="match-missing" class="chips"></div></div>
+        </div>
+      </section>
+
+      <!-- ============ RECOMMENDATIONS ============ -->
+      <section id="panel-careers" class="panel">
+        <h2>Career Recommendations</h2>
+        <p class="muted">Suitable job roles based on your skills and goals.</p>
+        <div id="rec-list" class="stack"></div>
+      </section>
+
+      <!-- ============ MAPPING ============ -->
+      <section id="panel-mapping" class="panel">
+        <h2>Skill-to-Job Mapping</h2>
+        <p class="muted">Which of your skills satisfy each job requirement — and what is missing.</p>
+        <div id="mapping-list" class="stack"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/career.js"></script>
+</body>
+</html>
