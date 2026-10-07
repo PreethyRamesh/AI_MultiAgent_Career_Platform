@@ -13,11 +13,19 @@
 
 ## Team Branches
 
-| Branch | Owner | Focus Area |
-|---|---|---|
-| `person1-preethy` | Preethy | Job-description analysis & skill-gap engine |
-| `person2-sandhiya` | Sandhiya | Resume/project analysis & skill extraction |
-| `person3-monika` | Monika | Learning roadmap & progress tracking |
+| Branch | Owner | Role | Focus Area |
+|---|---|---|---|
+| `person1-preethy` | Preethy | 👤 AI Career Analysis | Profile & goal setup, AI skill assessment, skill-gap analysis, career recommendations |
+| `person2-sandhiya` | Sandhiya | 🤖 AI Learning & Guidance | AI learning roadmap, daily mission system, adaptive AI mentor, skill tree |
+| `person3-monika` | Monika | 📊 Progress & Product | Dashboard, streak & gamification, analytics & graphs, achievements |
+
+### Responsibilities
+
+**Person 1 — AI Career Analysis:** Understand the student and identify where they stand.
+
+**Person 2 — AI Learning & Guidance:** Decide what the student should learn and do next.
+
+**Person 3 — Progress & Product:** Visualize and motivate progress.
 
 ## Getting Started
 
