@@ -1,3 +1,4 @@
+import asyncio
 import json
 import re
 from typing import Optional
@@ -37,14 +38,25 @@ async def _call(prompt: str, system: str, json_mode: bool = False) -> Optional[s
     }
     if json_mode:
         payload["generationConfig"]["responseMimeType"] = "application/json"
-    try:
-        async with httpx.AsyncClient(timeout=60) as client:
-            resp = await client.post(
-                url, params={"key": config.GEMINI_API_KEY}, json=payload
-            )
+    data: dict | None = None
+    for attempt in range(3):
+        try:
+            async with httpx.AsyncClient(timeout=120) as client:
+                resp = await client.post(
+                    url, params={"key": config.GEMINI_API_KEY}, json=payload
+                )
+            if resp.status_code in (429, 500, 503) and attempt < 2:
+                await asyncio.sleep(2 * (attempt + 1))
+                continue
             resp.raise_for_status()
             data = resp.json()
-    except (httpx.HTTPError, ValueError):
+            break
+        except (httpx.HTTPError, ValueError):
+            if attempt < 2:
+                await asyncio.sleep(2 * (attempt + 1))
+                continue
+            return None
+    if data is None:
         return None
     try:
         text = data["candidates"][0]["content"]["parts"][0]["text"]

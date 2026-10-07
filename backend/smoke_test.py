@@ -1,6 +1,9 @@
 from fastapi.testclient import TestClient
 
+from app import config
 from app.main import app
+
+config.GEMINI_API_KEY = ""  # hermetic run: force template/mentor fallbacks
 
 c = TestClient(app)
 
