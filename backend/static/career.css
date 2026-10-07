@@ -1,0 +1,175 @@
+/* ==========================================================================
+   AI Career Analysis module styles (Person 1)
+   Layered on top of the shared style.css design tokens — no duplicate
+   definitions of shared primitives (cards, buttons, tabs, badges, bars).
+   ========================================================================== */
+
+/* ---- layout: sidebar + content --------------------------------------- */
+.shell {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  gap: 20px;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.nav-btn:hover { color: var(--text); background: var(--panel); }
+.nav-btn.active { background: var(--panel); color: var(--text); border-color: var(--accent); }
+
+.content { min-width: 0; }
+.content .panel { display: none; }
+.content .panel.active { display: block; }
+
+/* ---- overview cards --------------------------------------------------- */
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-bottom: 16px; }
+.stat-card { text-align: center; }
+.stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.stat-value { font-size: 30px; font-weight: 800; margin: 6px 0 2px; }
+.stat-value.small { font-size: 18px; line-height: 1.35; }
+.stat-sub { color: var(--muted); font-size: 12px; min-height: 16px; }
+.score-mini { font-size: 34px; font-weight: 800; margin: 6px 0; color: var(--accent); }
+.scorebar { height: 10px; }
+.scorebar .bar-fill { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+.action-panel h3 { margin: 0 0 6px; }
+.muted { color: var(--muted); font-size: 13px; }
+.action-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+.btn.danger { color: #ff8fa3; border-color: #5c2230; }
+.btn.danger:hover { background: #3a1822; }
+
+/* ---- forms ------------------------------------------------------------- */
+textarea {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+  width: 100%;
+}
+textarea:focus { outline: 1px solid var(--accent); }
+.upload-label { font-size: 13px; color: var(--muted); }
+.upload-label input[type=file] { max-width: 220px; }
+
+/* ---- dynamic list rows (projects / courses) --------------------------- */
+.entry-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.entry-card .row { display: grid; gap: 8px; margin-bottom: 8px; }
+.entry-card input, .entry-card textarea { width: 100%; }
+.entry-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.entry-head label { font-size: 12px; color: var(--muted); }
+
+/* ---- result blocks ----------------------------------------------------- */
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.kv { font-size: 13px; }
+.kv b { color: var(--text); }
+.kv ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 12.5px; }
+
+/* section header like "Education" inside resume results */
+.res-section h3 { font-size: 14px; margin: 0 0 8px; }
+
+/* skill chips with counts */
+.chip.soft { background: #233046; color: #9fc1ff; }
+
+.badge.green { background: #14351f; color: #6ee7a2; }
+.badge.amber { background: #3a2c14; color: #f5c26b; }
+.badge.red { background: #471a1a; color: #ff9a9a; }
+.badge.neutral { background: #233046; color: #9fc1ff; }
+.badge.missing { background: #471a1a; color: #ff9a9a; }
+
+/* ---- skill profile ------------------------------------------------------ */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.category-item { margin-bottom: 12px; }
+.category-head { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; }
+.category-head b { color: var(--text); }
+.category-tags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
+
+.level-dots { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: middle; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--locked); }
+.dot.on { background: var(--accent2); }
+
+/* ---- gaps ---------------------------------------------------------------- */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.gap-col h3 { font-size: 14px; }
+.gap-col .chips { margin-top: 8px; }
+.gap-col.good { border-color: #1f4a32; }
+.gap-col.warn { border-color: #5c4a1c; }
+.gap-col.bad { border-color: #5c2222; }
+
+/* ---- match ---------------------------------------------------------------- */
+.match-card { text-align: center; padding: 26px; }
+.match-score { font-size: 56px; font-weight: 800; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.1; }
+.match-grade { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+.factor-row { display: grid; grid-template-columns: 46% 34% 20%; gap: 10px; align-items: center; font-size: 13px; margin-bottom: 10px; }
+.factor-name { color: var(--text); }
+.factor-val { text-align: right; color: var(--muted); }
+.factor-impact { text-align: center; font-size: 12px; }
+
+/* ---- recommendations ------------------------------------------------------ */
+.rec-card { display: grid; gap: 10px; }
+.rec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.rec-head h3 { margin: 0; font-size: 16px; }
+.rec-goal { font-size: 11px; color: var(--warn); }
+.rec-reason { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.rec-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---- skill-to-job mapping -------------------------------------------------- */
+.map-row { display: grid; grid-template-columns: 24% 16% 36% 24%; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 13px; }
+.map-row:last-child { border-bottom: 0; }
+.map-req { font-weight: 600; }
+.map-src { color: var(--muted); font-size: 12px; }
+.map-src ul { margin: 4px 0 0; padding-left: 16px; }
+.map-note { color: var(--muted); font-size: 12px; }
+
+/* ---- integration link in the shared topbar (also used by index.html) ------ */
+.module-link {
+  display: inline-block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+.module-link:hover { border-color: var(--accent); }
+
+/* ---- responsiveness --------------------------------------------------------- */
+@media (max-width: 920px) {
+  .shell { grid-template-columns: 1fr; }
+  .side { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; position: static; max-height: none; padding-bottom: 6px; }
+  .nav-btn { white-space: nowrap; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .map-row { grid-template-columns: 1fr 1fr; }
+  .map-req, .map-note { grid-column: 1 / -1; }
+}
+
+@media (max-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .action-row { flex-direction: column; align-items: stretch; }
+  .factor-row { grid-template-columns: 1fr; gap: 2px; }
+  .factor-val, .factor-impact { text-align: left; }
+}

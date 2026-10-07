@@ -33,3 +33,17 @@
 git clone <repo-url>
 git checkout person1-preethy   # or person2-sandhiya / person3-monika
 ```
+
+## AI Career Analysis Module (Person 1)
+
+Built on top of the shared FastAPI + Jinja2 + vanilla JS/CSS stack. Served at
+**`/career`**; API under **`/api/career/*`**. Adds:
+
+- Profile & Goal Setup, Resume / Project / Coursework Analysis
+- AI Skill Assessment (categorized skill profile + strengths)
+- Target Job Analysis, Skill Gap Analysis (has / improving / missing)
+- Job Match Score (0–100 with factors), Career Recommendations, Skill→Job Mapping
+
+Integration contract: `POST /api/career/skill-gaps` publishes gaps for Person 2's
+`POST /api/roadmap`; `GET /api/career/state` exposes match/assessment data for
+Person 3's dashboard. See `backend/career/README.md` for details.
