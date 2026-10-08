@@ -13,6 +13,19 @@ config.GEMINI_API_KEY = ""  # hermetic: force deterministic fallbacks
 
 c = TestClient(app)
 
+# Pages are auth-protected — sign in as the test user before hitting them.
+TEST_EMAIL = "career-smoke@student.edu"
+TEST_PASSWORD = "career-1234"
+r = c.post("/api/auth/login", json={"email": TEST_EMAIL, "password": TEST_PASSWORD})
+if r.status_code != 200:
+    s = c.post(
+        "/api/auth/signup",
+        json={"full_name": "Career Tester", "email": TEST_EMAIL, "password": TEST_PASSWORD},
+    )
+    assert s.status_code in (200, 201), s.text
+    r = c.post("/api/auth/login", json={"email": TEST_EMAIL, "password": TEST_PASSWORD})
+assert r.status_code == 200, r.text
+
 # --- page ---------------------------------------------------------------
 r = c.get("/career")
 assert r.status_code == 200, r.text

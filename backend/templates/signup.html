@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up · AI Multi-Agent Career Analysis Platform</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/auth.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-shell">
+
+    <aside class="auth-brand" aria-hidden="false">
+      <div class="brand-inner">
+        <div class="brand-logo">🧭</div>
+        <h1>AI Multi-Agent<br />Career Analysis Platform</h1>
+        <p class="tagline">Your AI-powered journey from skills to career.</p>
+        <ul class="brand-points">
+          <li>🧠 AI skill assessment &amp; gap analysis</li>
+          <li>🗺️ Personalized learning roadmap</li>
+          <li>🎯 Daily missions with an adaptive AI mentor</li>
+          <li>📊 Progress dashboard, streaks &amp; achievements</li>
+        </ul>
+      </div>
+      <footer class="brand-footer">Discover your skills. Build your future.</footer>
+    </aside>
+
+    <main class="auth-main">
+      <div class="auth-card card">
+        <h2>Create your account</h2>
+        <p class="auth-sub">Start your AI-guided career journey in under a minute.</p>
+
+        <form id="signup-form" class="auth-form" novalidate autocomplete="on">
+          <div class="field">
+            <label for="full_name">Full name</label>
+            <input id="full_name" name="full_name" type="text" autocomplete="name"
+                   placeholder="e.g. Priya Sharma" required />
+            <p class="field-msg" id="full_name-msg"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email"
+                   placeholder="you@student.edu" required />
+            <p class="field-msg" id="email-msg"></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input id="password" name="password" type="password"
+                     autocomplete="new-password" placeholder="At least 6 characters" required />
+              <button type="button" class="pw-toggle" data-target="password"
+                      aria-label="Show password" title="Show password">👁</button>
+            </div>
+            <p class="field-msg" id="password-msg"></p>
+          </div>
+
+          <div class="field">
+            <label for="confirm">Confirm password</label>
+            <div class="pw-wrap">
+              <input id="confirm" name="confirm" type="password"
+                     autocomplete="new-password" placeholder="Repeat your password" required />
+              <button type="button" class="pw-toggle" data-target="confirm"
+                      aria-label="Show password" title="Show password">👁</button>
+            </div>
+            <p class="field-msg" id="confirm-msg"></p>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert"></p>
+
+          <button type="submit" class="btn primary btn-block" id="signup-btn">
+            <span class="btn-label">Create Account</span>
+            <span class="spinner" hidden aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <p class="auth-alt">Already have an account? <a class="link" href="/login">Login</a></p>
+      </div>
+      <p class="auth-foot">Secured demo · Back to <a class="link" href="/">platform hub</a></p>
+    </main>
+
+  </div>
+
+  <script src="/static/auth.js"></script>
+</body>
+</html>

@@ -25,6 +25,13 @@
       </div>
       <!-- P1 integration: link to the AI Career Analysis module (no behavior change) -->
       <a href="/career" style="background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:8px 14px;text-decoration:none;font-size:13px;white-space:nowrap">🎯 Career Analysis</a>
+      <span class="auth-chip" title="Signed in as {{ user.email }}">
+        <span class="auth-avatar">👤</span>
+        <span class="auth-name">{{ user.full_name }}</span>
+        <form method="post" action="/logout" class="inline">
+          <button type="submit" class="btn ghost auth-logout">Logout</button>
+        </form>
+      </span>
     </div>
   </header>
 

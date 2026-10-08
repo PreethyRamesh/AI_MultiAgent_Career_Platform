@@ -167,6 +167,24 @@ input:focus { outline: 1px solid var(--accent); }
 .chat-input { display: flex; gap: 10px; }
 .chat-input input { flex: 1; }
 
+/* Logged-in user chip (auth integration) */
+.auth-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.auth-avatar { font-size: 16px; }
+.auth-name { max-width: 180px; overflow: hidden; text-overflow: ellipsis; }
+.auth-logout { border: none; background: transparent; color: var(--muted); padding: 4px 6px; font-size: 12px; cursor: pointer; }
+.auth-logout:hover { color: #e5534b; }
+form.inline { display: inline; margin: 0; }
+
 @media (max-width: 640px) {
   .topbar { flex-direction: column; align-items: flex-start; }
   .stats { width: 100%; }

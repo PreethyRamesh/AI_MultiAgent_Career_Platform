@@ -19,6 +19,27 @@ uvicorn app.main:app --reload
 
 Open http://127.0.0.1:8000
 
+Pages `/` (Learning Hub) and `/career` (Career Analysis) are **auth-protected** — unauthenticated
+visitors are redirected to `/login`.
+
+## Authentication (mock backend, swappable)
+
+Login / Sign Up / Forgot password pages ship with the module. Auth logic lives in
+`backend/app/auth.py` entirely (file-backed users + sessions, PBKDF2 password hashing,
+HttpOnly session cookie). Routes only call this module, so a real backend (DB/OAuth/JWT)
+can replace it without touching any UI.
+
+| Page / API | Description |
+|---|---|
+| `GET /login` `GET /signup` `GET /forgot` | Auth pages |
+| `POST /api/auth/login` | `{email, password, remember}` → sets session cookie |
+| `POST /api/auth/signup` | `{full_name, email, password}` → creates account + login |
+| `POST /api/auth/forgot` | Mock — honest message, no email is sent |
+| `GET /api/auth/me` | Current user or `401` |
+| `POST /logout` | Clears session and cookie |
+
+User/session data is stored in `app/data/users.json` / `sessions.json` (gitignored).
+
 ## API
 
 | Method | Path | Description |

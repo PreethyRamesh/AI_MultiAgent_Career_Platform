@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forgot Password · AI Multi-Agent Career Analysis Platform</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/auth.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-shell">
+
+    <aside class="auth-brand" aria-hidden="false">
+      <div class="brand-inner">
+        <div class="brand-logo">🔐</div>
+        <h1>Reset your password</h1>
+        <p class="tagline">We'll help you get back to your learning journey.</p>
+        <ul class="brand-points">
+          <li>Enter the email you registered with</li>
+          <li>Receive a secure reset link</li>
+          <li>Resume your roadmap where you left off</li>
+        </ul>
+      </div>
+      <footer class="brand-footer">Discover your skills. Build your future.</footer>
+    </aside>
+
+    <main class="auth-main">
+      <div class="auth-card card">
+        <h2>Forgot password?</h2>
+        <p class="auth-sub">Enter your account email below.</p>
+
+        <form id="forgot-form" class="auth-form" novalidate autocomplete="on">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email"
+                   placeholder="you@student.edu" required />
+            <p class="field-msg" id="email-msg"></p>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert"></p>
+          <div class="form-success" id="form-success" role="status" hidden></div>
+
+          <button type="submit" class="btn primary btn-block" id="forgot-btn">
+            <span class="btn-label">Send Reset Link</span>
+            <span class="spinner" hidden aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <p class="auth-alt">Remembered it? <a class="link" href="/login">Back to Login</a></p>
+      </div>
+      <p class="auth-foot">Secured demo · Back to <a class="link" href="/">platform hub</a></p>
+    </main>
+
+  </div>
+
+  <script src="/static/auth.js"></script>
+</body>
+</html>

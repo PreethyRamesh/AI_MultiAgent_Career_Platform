@@ -3,4 +3,6 @@ __pycache__/
 .env
 backend/app/data/state.json
 backend/app/data/career_state.json
+backend/app/data/users.json
+backend/app/data/sessions.json
 .venv/

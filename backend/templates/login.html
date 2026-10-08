@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login · AI Multi-Agent Career Analysis Platform</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/auth.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-shell">
+
+    <!-- Branding / AI illustration side -->
+    <aside class="auth-brand" aria-hidden="false">
+      <div class="brand-inner">
+        <div class="brand-logo">🧭</div>
+        <h1>AI Multi-Agent<br />Career Analysis Platform</h1>
+        <p class="tagline">Your AI-powered journey from skills to career.</p>
+        <ul class="brand-points">
+          <li>🧠 AI skill assessment &amp; gap analysis</li>
+          <li>🗺️ Personalized learning roadmap</li>
+          <li>🎯 Daily missions with an adaptive AI mentor</li>
+          <li>📊 Progress dashboard, streaks &amp; achievements</li>
+        </ul>
+      </div>
+      <footer class="brand-footer">Discover your skills. Build your future.</footer>
+    </aside>
+
+    <!-- Login form side -->
+    <main class="auth-main">
+      <div class="auth-card card">
+        <h2>Welcome back</h2>
+        <p class="auth-sub">Sign in to continue your learning journey.</p>
+
+        <form id="login-form" class="auth-form" novalidate autocomplete="on">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email"
+                   placeholder="you@student.edu" required />
+            <p class="field-msg" id="email-msg"></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input id="password" name="password" type="password"
+                     autocomplete="current-password" placeholder="Your password" required />
+              <button type="button" class="pw-toggle" data-target="password"
+                      aria-label="Show password" title="Show password">👁</button>
+            </div>
+            <p class="field-msg" id="password-msg"></p>
+          </div>
+
+          <div class="row-between">
+            <label class="check">
+              <input type="checkbox" id="remember" name="remember" />
+              <span>Remember me</span>
+            </label>
+            <a class="link" href="/forgot">Forgot password?</a>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert"></p>
+
+          <button type="submit" class="btn primary btn-block" id="login-btn">
+            <span class="btn-label">Login</span>
+            <span class="spinner" hidden aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <p class="auth-alt">Don't have an account? <a class="link" href="/signup">Sign Up</a></p>
+      </div>
+      <p class="auth-foot">Secured demo · Back to <a class="link" href="/">platform hub</a></p>
+    </main>
+
+  </div>
+
+  <script>window.AUTH_NEXT = {{ next | tojson }};</script>
+  <script src="/static/auth.js"></script>
+</body>
+</html>

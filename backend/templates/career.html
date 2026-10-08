@@ -22,6 +22,13 @@
       <div class="stat"><span id="ov-has">0</span><label>Have</label></div>
       <div class="stat"><span id="ov-gap">0</span><label>Gaps</label></div>
       <a class="module-link" href="/">🤖 Learning Hub</a>
+      <span class="auth-chip" title="Signed in as {{ user.email }}">
+        <span class="auth-avatar">👤</span>
+        <span class="auth-name">{{ user.full_name }}</span>
+        <form method="post" action="/logout" class="inline">
+          <button type="submit" class="btn ghost auth-logout">Logout</button>
+        </form>
+      </span>
     </div>
   </header>
 

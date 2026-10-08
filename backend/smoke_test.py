@@ -7,6 +7,19 @@ config.GEMINI_API_KEY = ""  # hermetic run: force template/mentor fallbacks
 
 c = TestClient(app)
 
+# Pages are auth-protected — sign in as the test user before hitting them.
+TEST_EMAIL = "smoke@student.edu"
+TEST_PASSWORD = "smoke-1234"
+r = c.post("/api/auth/login", json={"email": TEST_EMAIL, "password": TEST_PASSWORD})
+if r.status_code != 200:
+    s = c.post(
+        "/api/auth/signup",
+        json={"full_name": "Smoke Tester", "email": TEST_EMAIL, "password": TEST_PASSWORD},
+    )
+    assert s.status_code in (200, 201), s.text
+    r = c.post("/api/auth/login", json={"email": TEST_EMAIL, "password": TEST_PASSWORD})
+assert r.status_code == 200, r.text
+
 r = c.get("/")
 assert r.status_code == 200, r.text
 
